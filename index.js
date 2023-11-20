@@ -25,13 +25,16 @@ app.get("/user", (req, res) => {
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
-app.use("/uploads",express.static("uploads"));
+app.use("/uploads", express.static("uploads"));
 // http:/localhost:8200/uploads/
 app.use("/socialapp/api/users", userRouter);
 app.use("/socialapp/api/auth", authRouter);
 app.use("/socialapp/api/post", postRouter);
 app.use("/socialapp/api/post/comment", commentRouter);
 
+app.use("/", (req, res) => {
+res.send("server working fine")
+})
 
 app.listen(8200, () => {
     console.log("app is running on " + 8200)
