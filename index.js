@@ -11,7 +11,11 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URI).then(() => {
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 30000
+}).then(() => {
     console.log("mongodb connected")
 }).catch(err => {
     console.log(err);
@@ -33,7 +37,7 @@ app.use("/socialapp/api/post", postRouter);
 app.use("/socialapp/api/post/comment", commentRouter);
 
 app.use("/", (req, res) => {
-res.send("server working fine")
+    res.send("server working fine")
 })
 
 app.listen(8200, () => {
