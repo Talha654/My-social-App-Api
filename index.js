@@ -26,6 +26,7 @@ app.get("/user", (req, res) => {
 });
 
 // middleware
+app.use(cors());
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
