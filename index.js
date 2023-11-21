@@ -8,6 +8,7 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const helmet = require("helmet");
 const dotenv = require("dotenv");
+const cors = require("cors");
 
 dotenv.config();
 
